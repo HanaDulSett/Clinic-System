@@ -237,6 +237,7 @@ mvn spring-boot:run
 
 ## Troubleshooting
 Application Fails to Start: Ensure that JDK 17 is correctly installed and configured also in the project build path change to alternate JRE and select JDK 17. Check the application logs for detailed error messages.
+* Change javax.version to your jdk version inside pom.xml for both application and saved.
 API Endpoints Not Found: Verify that the application is running on the correct port and that the URL paths match those specified in the README.md.
 
 
