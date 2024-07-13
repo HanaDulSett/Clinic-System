@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Clinic Management System - Patient List</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <a class="navbar-brand" href="#">Clinic Management System</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" th:href="@{/patients}">Patient Management</a></li>
+            <li class="nav-item"><a class="nav-link" th:href="@{/appointments}">Appointment Management</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <h1 class="mb-4">List of All Patients</h1>
+
+    <div class="row mb-3">
+        <div class="col-lg-3">
+            <a th:href="@{/patients/new}" class="btn btn-primary btn-sm">Add Patient</a>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+            <tr>
+                <th>Patient ID</th>
+                <th>Patient Name</th>
+                <th>Patient IC No</th>
+                <th>Patient Age</th>
+                <th>Patient Gender</th>
+                <th>Patient Phone Number</th>
+                <th>Patient Email</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="patient: ${patients}">
+                <td th:text="${patient.id}"></td>
+                <td th:text="${patient.name}"></td>
+                <td th:text="${patient.icNo}"></td>
+                <td th:text="${patient.age}"></td>
+                <td th:text="${patient.gender}"></td>
+                <td th:text="${patient.phone}"></td>
+                <td th:text="${patient.email}"></td>
+                <td>
+                    <a th:href="@{/patients/edit/{id}(id=${patient.id})}" class="btn btn-primary btn-sm mr-2">Update</a><br><br>
+                    <a href="#" th:onclick="'javascript:deletePatient(' + ${patient.id} + ');'" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- JavaScript confirmation dialog for delete action -->
+<script th:inline="javascript">
+    function deletePatient(patientId) {
+        if (confirm('Are you sure you want to delete this patient?')) {
+            window.location.href = '/patients/' + patientId;
+        }
+    }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha384-HcBA2ZszxjvJkNUvzP8wQnjY3SFp0cJChn4x8fn8+0MTQhr4Ztp2M+E7aJNsk0FV"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-vAD7ag+p9QXzG0Co10DeSs2E8mQIuJnVGz1aBx2r7sy6VZTnHVZ5IvXkNbxh3FN5"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-LFq7xivZfQ/lxj+fsSuX/p8IOr0LDuTzk2Be4Yjbxo9pBjiqyQ/LH6s4UHJSVvpB"
+        crossorigin="anonymous"></script>
+</body>
+</html>

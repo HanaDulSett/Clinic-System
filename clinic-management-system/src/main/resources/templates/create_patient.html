@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Clinic Management System - Create Patient</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        .container {
+            margin-top: 20px;
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .alert-danger {
+            margin-top: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <a class="navbar-brand" href="#">Clinic Management System</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" th:href="@{/patients}">Patient Management</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/appointments}">Appointment Management</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8 col-sm-10">
+                <div class="card">
+                    <h1 class="card-header text-center">Add New Patient</h1>
+                    <div class="card-body">
+                        <form th:action="@{/patients}" th:object="${patient}" method="POST">
+                            <!-- Error message for IC number duplicate -->
+                            <div th:if="${#fields.hasErrors('icNo')}" class="alert alert-danger" role="alert">
+                                <p th:each="error : ${#fields.errors('icNo')}" th:text="${error}"></p>
+                            </div>
+                            <!-- Patient Name -->
+                            <div class="form-group">
+                                <label for="name">Patient Name</label>
+                                <input type="text" id="name" name="name" th:field="*{name}" class="form-control" required placeholder="Enter Patient Name">
+                            </div>
+                            <!-- IC Number -->
+                            <div class="form-group">
+                                <label for="icNo">IC No</label>
+                                <input type="text" id="icNo" name="icNo" th:field="*{icNo}" class="form-control" required placeholder="Enter IC No without dash (-) ">
+                            </div>
+                            <!-- Age -->
+                            <div class="form-group">
+                                <label for="age">Age</label>
+                                <input type="number" id="age" name="age" th:field="*{age}" class="form-control" required placeholder="Enter Age">
+                            </div>
+                            <!-- Gender -->
+                            <div class="form-group">
+                                <label for="gender">Gender</label>
+                                <select id="gender" name="gender" th:field="*{gender}" class="form-control">
+                                    <option value="" disabled>Select Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <!-- Phone -->
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="text" id="phone" name="phone" th:field="*{phone}" class="form-control" required placeholder="Enter Phone Number without dash (-)">
+                            </div>
+                            <!-- Email -->
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" th:field="*{email}" class="form-control" required placeholder="Enter Email">
+                            </div>
+                            <!-- Submit Button -->
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional: JavaScript for Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

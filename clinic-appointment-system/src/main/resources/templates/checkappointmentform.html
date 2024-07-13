@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Check Appointment</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 500px;
+            margin-top: 50px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+            padding: 30px;
+            background-color: #ffffff;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #007bff;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .btn-primary:hover {
+            background-color: #0069d9;
+        }
+
+        .alert-danger {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Check Appointment</h1>
+    <form th:action="@{/check-appointment/check}" method="post">
+        <div class="form-group">
+            <label for="icNo">Enter IC Number:</label>
+            <input type="text" id="icNo" name="icNo" class="form-control" required placeholder="Enter IC No without dash (-)">
+        </div>
+        <button type="submit" class="btn btn-primary">Check Appointment</button>
+    </form>
+
+    <div th:if="${message}" class="alert alert-danger mt-3" role="alert">
+        <p th:text="${message}"></p>
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha384-HcBA2ZszxjvJkNUvzP8wQnjY3SFp0cJChn4x8fn8+0MTQhr4Ztp2M+E7aJNsk0FV"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-vAD7ag+p9QXzG0Co10DeSs2E8mQIuJnVGz1aBx2r7sy6VZTnHVZ5IvXkNbxh3FN5"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-LFq7xivZfQ/lxj+fsSuX/p8IOr0LDuTzk2Be4Yjbxo9pBjiqyQ/LH6s4UHJSVvpB"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>
