@@ -34,11 +34,12 @@ The Clinic Appointment System is a user-facing application that allows patients 
 
 ### Clinic Management System
 
-https://github.com/HanaDulSett/Clinic-System/blob/main/Architecture_Layer_Diagram.jpg
+![Architecture_Layer_Diagram](https://github.com/user-attachments/assets/4b44ffaa-bf78-463e-9ea5-fda30b5507a5)
+
 
 ### Clinic Appointment System
 
-https://github.com/HanaDulSett/Clinic-System/blob/main/Architecture_Layer_Diagram.jpg
+![Architecture_Layer_Diagram](https://github.com/user-attachments/assets/07828036-1b60-4548-882a-b81ed60c242b)
 
 
 ## Middleware RESTful Endpoints
